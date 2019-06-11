@@ -1,15 +1,11 @@
 import { padding, transitions } from 'polished';
 import React, {
   ButtonHTMLAttributes,
-  ClassAttributes,
+  ComponentPropsWithoutRef,
   DetailedHTMLProps,
 } from 'react';
-import {
-  StyledComponentClass,
-  ThemedOuterStyledProps,
-} from 'styled-components';
+import { StyledComponentClass } from 'styled-components';
 
-import Omit from '../../Omit';
 import styled from '../../styled-components';
 import Theme, { borderRadius, scale, transitionDuration } from '../../Theme';
 import Typography from '../../Typography';
@@ -74,20 +70,7 @@ export function Button({
   children,
   icon,
   ...rest
-}: ButtonProps &
-  Omit<
-    ThemedOuterStyledProps<
-      DetailedHTMLProps<
-        ButtonHTMLAttributes<HTMLButtonElement>,
-        HTMLButtonElement
-      > &
-        ClassAttributes<HTMLButtonElement> &
-        ButtonHTMLAttributes<HTMLButtonElement> &
-        StyledButtonProps,
-      Theme
-    >,
-    'ref'
-  >) {
+}: ButtonProps & ComponentPropsWithoutRef<typeof BasicButton>) {
   const ButtonComponent = basic || icon ? BasicButton : StyledButton;
 
   return (

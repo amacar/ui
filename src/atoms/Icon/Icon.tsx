@@ -2,7 +2,6 @@ import { size } from 'polished';
 import React from 'react';
 import InlineSVG, { Props } from 'react-inlinesvg';
 
-import Omit from '../../Omit';
 import styled from '../../styled-components';
 import { scale } from '../../Theme';
 

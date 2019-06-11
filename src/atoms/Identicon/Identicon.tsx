@@ -1,8 +1,11 @@
 import makeBlockie from 'ethereum-blockies-base64';
-import React, { ClassAttributes, HTMLAttributes } from 'react';
+import React, {
+  ClassAttributes,
+  ComponentPropsWithoutRef,
+  HTMLAttributes,
+} from 'react';
 import { ThemedOuterStyledProps } from 'styled-components';
 
-import Omit from '../../Omit';
 import styled from '../../styled-components';
 import Theme from '../../Theme';
 import Typography from '../../Typography';
@@ -21,13 +24,8 @@ const RoundedImage = styled.img`
 export const Identicon = ({
   address,
   ...rest
-}: { address: string } & Omit<
-  ThemedOuterStyledProps<
-    ClassAttributes<HTMLParagraphElement> &
-      HTMLAttributes<HTMLParagraphElement> & { muted?: boolean; as?: string },
-    Theme
-  >,
-  'ref'
+}: { address: string } & ComponentPropsWithoutRef<
+  typeof TypographyWrapper
 >) => {
   return (
     <TypographyWrapper {...rest}>

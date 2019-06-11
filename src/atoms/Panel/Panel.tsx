@@ -1,6 +1,7 @@
 import { padding, size } from 'polished';
 import React, {
   ButtonHTMLAttributes,
+  ComponentPropsWithoutRef,
   DetailedHTMLProps,
   HTMLAttributes,
 } from 'react';
@@ -9,7 +10,6 @@ import {
   ThemedOuterStyledProps,
 } from 'styled-components';
 
-import Omit from '../../Omit';
 import styled from '../../styled-components';
 import Theme, { borderRadiusLarge, scale } from '../../Theme';
 
@@ -70,14 +70,7 @@ export function Panel({
   isPlaceholder,
   onClick,
   ...rest
-}: PanelProps &
-  Omit<
-    ThemedOuterStyledProps<
-      DetailedHTMLProps<HTMLAttributes<HTMLElement>, HTMLElement>,
-      Theme
-    >,
-    'ref'
-  >) {
+}: PanelProps & ComponentPropsWithoutRef<typeof StyledPanel>) {
   if (basic) {
     return <BasicPanel {...rest} />;
   } else if (onClick) {

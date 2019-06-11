@@ -2,6 +2,7 @@ import React, {
   ButtonHTMLAttributes,
   ClassAttributes,
   Component,
+  ComponentPropsWithoutRef,
   DetailedHTMLProps,
   ReactNode,
 } from 'react';
@@ -9,7 +10,6 @@ import styled, { ThemedOuterStyledProps } from 'styled-components';
 
 import { Button, Icon, Tooltip } from '../../atoms';
 import { ButtonProps, StyledButtonProps } from '../../atoms/Button/Button';
-import Omit from '../../Omit';
 import Theme from '../../Theme';
 import Typography from '../../Typography';
 
@@ -53,20 +53,7 @@ export class Copyable extends Component<
 
   public renderButton(
     children: ReactNode,
-    props?: ButtonProps &
-      Omit<
-        ThemedOuterStyledProps<
-          DetailedHTMLProps<
-            ButtonHTMLAttributes<HTMLButtonElement>,
-            HTMLButtonElement
-          > &
-            ClassAttributes<HTMLButtonElement> &
-            ButtonHTMLAttributes<HTMLButtonElement> &
-            StyledButtonProps,
-          Theme
-        >,
-        'ref'
-      >,
+    props?: ButtonProps & ComponentPropsWithoutRef<typeof Button>,
   ) {
     const { text } = this.props;
     const { copied } = this.state;

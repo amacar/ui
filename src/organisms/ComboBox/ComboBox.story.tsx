@@ -2,29 +2,19 @@ import { storiesOf } from '@storybook/react';
 import React, {
   ChangeEvent,
   Component,
+  ComponentPropsWithoutRef,
   DetailedHTMLProps,
   InputHTMLAttributes,
 } from 'react';
 import { ThemedOuterStyledProps } from 'styled-components';
 
 import { Panel } from '../../atoms';
-import Omit from '../../Omit';
 import Theme from '../../Theme';
 import Typography from '../../Typography';
 import ComboBox, { ComboBoxProps } from './ComboBox';
 
 class ControlledComboBox extends Component<
-  ComboBoxProps &
-    Omit<
-      ThemedOuterStyledProps<
-        DetailedHTMLProps<
-          InputHTMLAttributes<HTMLInputElement>,
-          HTMLInputElement
-        >,
-        Theme
-      >,
-      'ref'
-    >,
+  ComboBoxProps & ComponentPropsWithoutRef<typeof ComboBox>,
   {
     value: string;
   }
